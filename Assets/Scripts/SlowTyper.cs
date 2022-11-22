@@ -370,6 +370,6 @@ public class SlowTyper : MonoBehaviour
 
 	void PlayTypingSound()
 	{
-		//AudioManeger.Get().Play("Typing" + Mathf.Floor(Random.Range(0, 9)));
+		AudioManager.Get()?.Play("Typing");
 	}
 }

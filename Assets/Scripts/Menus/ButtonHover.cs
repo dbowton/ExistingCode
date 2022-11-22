@@ -22,6 +22,7 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		SetColors(1, 0);
+		AudioManager.Get()?.Play("Typing");
 	}
 
 	public void OnPointerExit(PointerEventData eventData)
