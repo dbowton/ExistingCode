@@ -16,9 +16,11 @@ public class Player : MonoBehaviour
 
 	[SerializeField]
 	private float m_Speed = 2;
+	private int lives = 3;
 
 	[SerializeField]
 	private GameObject m_DeathParticals;
+	public GameObject m_HitParticals;
 
 	private float m_StartHeight;
 
@@ -50,7 +52,20 @@ public class Player : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		Die();
+		if (collision.gameObject.tag == "Wall") return;
+
+		lives--;
+
+        if (lives < 0)
+		{
+			GameObject particle = Instantiate(m_HitParticals);
+			particle.transform.position = transform.position;
+		}
+		
+        if (lives<= 0)
+		{
+			Die();
+		}
 	}
 
 	private void Die()
@@ -61,3 +76,6 @@ public class Player : MonoBehaviour
 		Destroy(gameObject);
 	}
 }
+
+
+// walls don't kill and 3 lives 
