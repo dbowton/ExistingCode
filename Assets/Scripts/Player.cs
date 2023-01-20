@@ -66,8 +66,17 @@ public class Player : MonoBehaviour
 				if (xInput == 0) Hit();
 				break;
 			case "StayStillEnemy":
-				if (xInput > 0) Hit();
-				break;	
+				if (xInput != 0) Hit();
+				break;
+			case "InstakillEnemy":
+				Die();
+				break;
+			case "HealthBackEnemy":
+				if (lives < 3) lives++;
+				break;
+			case "KeyEnemy":
+				//Write later
+				break;
 		}
 	}
 
@@ -82,10 +91,15 @@ public class Player : MonoBehaviour
         } 
 		else
         {
-			OnDeath.Invoke();
-			GameObject particle = Instantiate(m_DeathParticals);
-			particle.transform.position = transform.position;
-			Destroy(gameObject);
+			Die();
 		}
+	}
+
+	private void Die()
+    {
+		OnDeath.Invoke();
+		GameObject particle = Instantiate(m_DeathParticals);
+		particle.transform.position = transform.position;
+		Destroy(gameObject);
 	}
 }

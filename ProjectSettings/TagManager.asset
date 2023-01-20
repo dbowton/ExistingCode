@@ -8,6 +8,8 @@ TagManager:
   - MustMoveEnemy
   - StayStillEnemy
   - BasicEnemy
+  - HealthBackEnemy
+  - InstakillEnemy
   layers:
   - Default
   - TransparentFX
