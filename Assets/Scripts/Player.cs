@@ -67,7 +67,11 @@ public class Player : MonoBehaviour
 				break;
 			case "StayStillEnemy":
 				if (xInput > 0) Hit();
-				break;	
+				break;
+			case "VictoryEnemy":
+				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel + 1));
+				Die();
+				break;
 		}
 	}
 
@@ -82,10 +86,15 @@ public class Player : MonoBehaviour
         } 
 		else
         {
-			OnDeath.Invoke();
-			GameObject particle = Instantiate(m_DeathParticals);
-			particle.transform.position = transform.position;
-			Destroy(gameObject);
+			Die();
 		}
+	}
+
+	private void Die()
+	{
+		OnDeath.Invoke();
+		GameObject particle = Instantiate(m_DeathParticals);
+		particle.transform.position = transform.position;
+		Destroy(gameObject);
 	}
 }
