@@ -77,6 +77,10 @@ public class Player : MonoBehaviour
 			case "KeyEnemy":
 				col.gameObject.GetComponent<KeyEnemy>().Activate();
 				break;
+      case "VictoryEnemy":
+				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel + 1));
+				Die();
+				break;
 		}
 	}
 
@@ -96,7 +100,7 @@ public class Player : MonoBehaviour
 	}
 
 	private void Die()
-    {
+	{
 		OnDeath.Invoke();
 		GameObject particle = Instantiate(m_DeathParticals);
 		particle.transform.position = transform.position;

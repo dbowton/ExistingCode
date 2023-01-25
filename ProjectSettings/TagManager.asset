@@ -8,6 +8,7 @@ TagManager:
   - MustMoveEnemy
   - StayStillEnemy
   - BasicEnemy
+  - VictoryEnemy
   - HealthBackEnemy
   - InstakillEnemy
   - KeyEnemy
