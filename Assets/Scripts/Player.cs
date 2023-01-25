@@ -66,9 +66,18 @@ public class Player : MonoBehaviour
 				if (xInput == 0) Hit();
 				break;
 			case "StayStillEnemy":
-				if (xInput > 0) Hit();
+				if (xInput != 0) Hit();
 				break;
-			case "VictoryEnemy":
+			case "InstakillEnemy":
+				Die();
+				break;
+			case "HealthBackEnemy":
+				if (lives < 3) lives++;
+				break;
+			case "KeyEnemy":
+				col.gameObject.GetComponent<KeyEnemy>().Activate();
+				break;
+      case "VictoryEnemy":
 				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel + 1));
 				Die();
 				break;

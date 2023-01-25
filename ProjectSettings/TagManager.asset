@@ -9,6 +9,9 @@ TagManager:
   - StayStillEnemy
   - BasicEnemy
   - VictoryEnemy
+  - HealthBackEnemy
+  - InstakillEnemy
+  - KeyEnemy
   layers:
   - Default
   - TransparentFX
