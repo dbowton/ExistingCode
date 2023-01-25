@@ -11,14 +11,19 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 	private Image m_Image;
 	private TextMeshProUGUI m_Text;
 
-
-	private void Start()
+	private void Awake()
 	{
 		m_Image = GetComponent<Image>();
 		m_Text = GetComponentInChildren<TextMeshProUGUI>();
 
 		SetColors(0, 1);
 	}
+
+	private void OnEnable()
+	{
+		SetColors(0, 1);
+	}
+
 	public void OnPointerEnter(PointerEventData eventData)
 	{
 		SetColors(1, 0);

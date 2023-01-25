@@ -811,7 +811,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 1000}
+  m_SizeDelta: {x: 1303, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404755277
 MonoBehaviour:
@@ -4396,7 +4396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 20
   m_InitalTimeOffset: 0
-  m_Text: '"PLAY"'
+  m_Text: '"GIMME X GIMME"'
   m_FinishTypingOnClick: 1
   m_OnEnable: 1
   m_LoadEvent:
@@ -4431,7 +4431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 1
+  m_text: GIMME X GIMME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e71514da7f233374a9072042fd25f5eb, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: e71514da7f233374a9072042fd25f5eb, type: 2}
