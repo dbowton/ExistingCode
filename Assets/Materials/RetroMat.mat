@@ -94,6 +94,6 @@ Material:
     - smallLow: 0.94
     - smallSpeed: 0.36
     - speed: 1
-    - yOff: -0.0021310113
+    - yOff: -0.0006726326
     m_Colors: []
   m_BuildTextureStacks: []
