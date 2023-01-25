@@ -10,6 +10,7 @@ TagManager:
   - BasicEnemy
   - HealthBackEnemy
   - InstakillEnemy
+  - KeyEnemy
   layers:
   - Default
   - TransparentFX

@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
 				if (lives < 3) lives++;
 				break;
 			case "KeyEnemy":
-				//Write later
+				col.gameObject.GetComponent<KeyEnemy>().Activate();
 				break;
 		}
 	}
