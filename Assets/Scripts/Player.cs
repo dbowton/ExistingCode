@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public event UnityAction OnDeath;
 
 	private Rigidbody2D m_RigidBody;
+	private float xInput;
 
 	[SerializeField]
 	private float m_Speed = 2;
@@ -41,29 +42,59 @@ public class Player : MonoBehaviour
 		m_StartHeight = transform.position.y;
 	}
 
+	private void Update()
+    {
+		xInput = Input.GetAxisRaw("Horizontal");
+	}
+
 	private void FixedUpdate()
 	{
-		float x = Input.GetAxisRaw("Horizontal");
 		Vector3 pos = transform.position;
-		pos.x += x * m_Speed * Time.deltaTime;
+		pos.x += xInput * m_Speed * Time.deltaTime;
 		pos.y = m_StartHeight;
 		transform.position = pos;
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
-	{
-		if (collision.gameObject.tag == "Wall") return;
+	public void OnTriggerEnter2D(Collider2D col)
+    {
+		switch (col.gameObject.tag)
+		{
+			case "BasicEnemy":
+				Hit();
+				break;
+			case "MustMoveEnemy":
+				if (xInput == 0) Hit();
+				break;
+			case "StayStillEnemy":
+				if (xInput != 0) Hit();
+				break;
+			case "InstakillEnemy":
+				Die();
+				break;
+			case "HealthBackEnemy":
+				if (lives < 3) lives++;
+				break;
+			case "KeyEnemy":
+				col.gameObject.GetComponent<KeyEnemy>().Activate();
+				break;
+      case "VictoryEnemy":
+				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel + 1));
+				Die();
+				break;
+		}
+	}
 
+    private void Hit()
+	{
 		lives--;
 
-        if (lives < 0)
-		{
-			GameObject particle = Instantiate(m_HitParticals);
-			particle.transform.position = transform.position;
-		}
-		
-        if (lives<= 0)
-		{
+		if(lives > 0)
+        {
+			GameObject hitParticle = Instantiate(m_HitParticals);
+			hitParticle.transform.position = transform.position;
+        } 
+		else
+        {
 			Die();
 		}
 	}
@@ -76,6 +107,3 @@ public class Player : MonoBehaviour
 		Destroy(gameObject);
 	}
 }
-
-
-// walls don't kill and 3 lives 

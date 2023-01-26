@@ -19,6 +19,10 @@ public class PlayMenu : MonoBehaviour
 
 	public void OnPlay()
 	{
+		if (m_Level - 1 > PlayerPrefs.GetInt("Unlocked Levels")) return;
+
+		GameManager.Get().currentLevel = m_Level;
+
 		if(SceneManager.GetSceneByName("Level"+m_Level) != null)
 			SceneManager.LoadScene("Level"+m_Level);
 	}

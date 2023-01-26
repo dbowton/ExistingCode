@@ -171,7 +171,7 @@ MonoBehaviour:
   m_EditorSettings:
     m_Framerate: 60
     m_ScenePreview: 1
-  m_DurationMode: 1
+  m_DurationMode: 0
   m_MarkerTrack: {fileID: 2170290620557506873}
 --- !u!114 &491539251019148503
 MonoBehaviour:
@@ -197,8 +197,8 @@ MonoBehaviour:
   - m_Version: 1
     m_Start: 0
     m_ClipIn: 0
-    m_Asset: {fileID: 2612230272006002009}
-    m_Duration: 212.78400000000005
+    m_Asset: {fileID: 2033653643729642168}
+    m_Duration: 220.296
     m_TimeScale: 1
     m_ParentTrack: {fileID: 491539251019148503}
     m_EaseInDuration: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: Miku_Hatsune_FT_Rin_kagamine_Gimme_(getmp3.pro)
+    m_DisplayName: YACHT - Le Goudron - DFA RECORDS
   m_Markers:
     m_Objects: []
   m_TrackProperties:
@@ -424,6 +424,23 @@ MonoBehaviour:
   m_OpenClipOffsetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
   m_ApplyOffsets: 0
+--- !u!114 &2033653643729642168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
+  m_Name: AudioPlayableAsset
+  m_EditorClassIdentifier: 
+  m_Clip: {fileID: 8300000, guid: 8ab25790525b9eb4eb5eb4948e315823, type: 3}
+  m_Loop: 0
+  m_bufferingTime: 0.1
+  m_ClipProperties:
+    volume: 1
 --- !u!114 &2170290620557506873
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,23 +464,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &2612230272006002009
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f10dd60657c6004587f237a7e90f8e4, type: 3}
-  m_Name: AudioPlayableAsset
-  m_EditorClassIdentifier: 
-  m_Clip: {fileID: 8300000, guid: eedc85f30f526364f95da7b61843cd6c, type: 3}
-  m_Loop: 0
-  m_bufferingTime: 0.1
-  m_ClipProperties:
-    volume: 1
 --- !u!114 &6274066475492410905
 MonoBehaviour:
   m_ObjectHideFlags: 1

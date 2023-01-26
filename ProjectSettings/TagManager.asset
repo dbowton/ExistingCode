@@ -4,7 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
+  - Undefined
+  - MustMoveEnemy
+  - StayStillEnemy
+  - BasicEnemy
+  - VictoryEnemy
+  - HealthBackEnemy
+  - InstakillEnemy
+  - KeyEnemy
   layers:
   - Default
   - TransparentFX
