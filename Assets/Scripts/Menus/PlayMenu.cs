@@ -19,7 +19,9 @@ public class PlayMenu : MonoBehaviour
 
 	public void OnPlay()
 	{
-		if (m_Level - 1 > PlayerPrefs.GetInt("Unlocked Levels")) return;
+		#if !UNITY_EDITOR
+				if (m_Level - 1 > PlayerPrefs.GetInt("Unlocked Levels")) return;
+		#endif
 
 		GameManager.Get().currentLevel = m_Level;
 
