@@ -94,7 +94,7 @@ Material:
     - smallLow: 0.94
     - smallSpeed: 0.36
     - speed: 1
-    - yOff: -0.0005646113
+    - yOff: -0.0010767909
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
