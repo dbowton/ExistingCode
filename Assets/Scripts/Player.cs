@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 	public event UnityAction OnDeath;
 
 	private Rigidbody2D m_RigidBody;
+	private SpriteRenderer m_SpriteRenderer ;
 	private float xInput;
 
 	[SerializeField]
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
 	void Start()
 	{
 		m_RigidBody = GetComponent<Rigidbody2D>();
+		m_SpriteRenderer = GetComponent<SpriteRenderer>();
 		m_StartHeight = transform.position.y;
 	}
 
@@ -73,6 +75,7 @@ public class Player : MonoBehaviour
 				break;
 			case "HealthBackEnemy":
 				if (lives < 3) lives++;
+				updateColor();
 				break;
 			case "KeyEnemy":
 				col.gameObject.GetComponent<KeyEnemy>().Activate();
@@ -87,6 +90,7 @@ public class Player : MonoBehaviour
     private void Hit()
 	{
 		lives--;
+		updateColor();
 
 		if(lives > 0)
         {
@@ -97,6 +101,14 @@ public class Player : MonoBehaviour
         {
 			Die();
 		}
+	}
+
+	private void updateColor()
+	{
+		if(lives ==1) m_SpriteRenderer.material.color = new Color (207/255f,43/255f,79/255f);
+		if(lives ==2) m_SpriteRenderer.material.color = new Color(241/255f,142/255f,164/255f);
+		if(lives ==3) m_SpriteRenderer.material.color = Color.white;
+		
 	}
 
 	private void Die()
