@@ -32,7 +32,8 @@ public class AudioVisualizer : MonoBehaviour
 		m_Source = GetComponent<AudioSource>();
 		m_Source.volume = PlayerPrefs.GetFloat("Master Volume") * PlayerPrefs.GetFloat("Music Volume");
 		m_FFTSampleTexture = new Texture2D(m_LeftVisualizer.childCount, 1, TextureFormat.RFloat, false);
-		m_ParticalSystem.SetTexture(Shader.PropertyToID("FFTSamples"), m_FFTSampleTexture);
+		if(m_ParticalSystem)
+			m_ParticalSystem.SetTexture(Shader.PropertyToID("FFTSamples"), m_FFTSampleTexture);
 	}
 
 	void Update()
