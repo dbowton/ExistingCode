@@ -5088,9 +5088,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GIMME X GIMME INSTRUMENTAL
+  m_text: 'IM GOOD
 
-    BY HATSUNE MIKU'
+    BY BEBE REXHA'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e71514da7f233374a9072042fd25f5eb, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: e71514da7f233374a9072042fd25f5eb, type: 2}
