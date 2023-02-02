@@ -41,13 +41,19 @@ public class MapController : MonoBehaviour, INotificationReceiver
 	[SerializeField]
 	private GameObject m_DeathMenu;
 
+	[SerializeField]
+	private GameObject m_VictoryMenu;
+
 	private PlayableDirector m_Director;
 
 	[SerializeField]
 	private float m_DecayTime;
 	private float m_DecayTimer;
 	private bool m_PlayerDead = false;
+	private bool m_PlayerWon = false;
 	public bool IsPlayerDead() { return m_PlayerDead; }
+	public bool HasPlayerWon() { return m_PlayerWon; }
+
 
 	private void Start()
 	{
@@ -61,6 +67,10 @@ public class MapController : MonoBehaviour, INotificationReceiver
 
 		if(Player.Get())
 			Player.Get().OnDeath += OnPlayerDeath;
+
+		if (Player.Get())
+			Player.Get().OnWin += OnPlayerWon;
+
 		m_Director = GetComponent<PlayableDirector>();
 	}
 
@@ -70,15 +80,20 @@ public class MapController : MonoBehaviour, INotificationReceiver
 
 		UpdateClosed();
 
-		if(m_PlayerDead && UnityEditor.EditorApplication.isPlaying)
+		if((m_PlayerDead || m_PlayerWon) && UnityEditor.EditorApplication.isPlaying)
 		{
 			m_DecayTimer -= Time.deltaTime;
 			if (m_DecayTimer < 0) m_DecayTime = 0;
-			if(m_Director.state == PlayState.Playing)
+			if(m_PlayerDead && m_Director.state == PlayState.Playing)
 				m_Director.playableGraph.GetRootPlayable(0).SetSpeed(Mathf.Clamp(m_DecayTimer / m_DecayTime, 0, 1));
 
-			if(m_DecayTimer <= 0)
-				m_DeathMenu.SetActive(true);
+			if (m_DecayTimer <= 0)
+			{
+				if(m_PlayerDead)
+					m_DeathMenu.SetActive(true);
+				else
+					m_VictoryMenu.SetActive(true);
+			}
 		}
 	}
 
@@ -95,6 +110,12 @@ public class MapController : MonoBehaviour, INotificationReceiver
 	}
 
 	private void OnPlayerDeath()
+	{
+		m_DecayTimer = m_DecayTime;
+		m_PlayerDead = true;
+	}
+
+	private void OnPlayerWon()
 	{
 		m_DecayTimer = m_DecayTime;
 		m_PlayerDead = true;
