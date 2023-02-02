@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 				col.gameObject.GetComponent<KeyEnemy>().Activate();
 				break;
 			case "VictoryEnemy":
-				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel + 1));
+				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel));
 				Die();
 				break;
 		}
