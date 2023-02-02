@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 	private bool m_Loaded = false;
 	private float m_LoadMainMenuTime = 0;
 
-	public int currentLevel;
+	[HideInInspector] public int currentLevel;
 
 	void Start()
 	{

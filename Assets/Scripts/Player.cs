@@ -86,7 +86,6 @@ public class Player : MonoBehaviour
 				col.gameObject.GetComponent<KeyEnemy>().Activate();
 				break;
 			case "VictoryEnemy":
-				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel));
 				Win();
 				break;
 		}
@@ -117,7 +116,9 @@ public class Player : MonoBehaviour
 	}
 
 	private void Win()
-	{
+	{		
+		PlayerPrefs.SetInt("Unlocked Levels", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel));
+
 		OnWin.Invoke();
 		GameObject particle = Instantiate(m_WinParticals);
 		particle.transform.position = transform.position;

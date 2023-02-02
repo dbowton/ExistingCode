@@ -87,8 +87,10 @@ public class MapController : MonoBehaviour, INotificationReceiver
 			if(m_PlayerDead && m_Director.state == PlayState.Playing)
 				m_Director.playableGraph.GetRootPlayable(0).SetSpeed(Mathf.Clamp(m_DecayTimer / m_DecayTime, 0, 1));
 
-			if (m_DecayTimer <= 0)
+			if (!entered && m_DecayTimer <= 0)
 			{
+				entered = true;
+
 				if(m_PlayerDead)
 					m_DeathMenu.SetActive(true);
 				else
@@ -96,6 +98,8 @@ public class MapController : MonoBehaviour, INotificationReceiver
 			}
 		}
 	}
+
+	bool entered = false;
 
 	private void UpdateClosed()
 	{
@@ -118,7 +122,7 @@ public class MapController : MonoBehaviour, INotificationReceiver
 	private void OnPlayerWon()
 	{
 		m_DecayTimer = m_DecayTime;
-		m_PlayerDead = true;
+		m_PlayerWon = true;
 	}
 
 	public void OnNotify(Playable origin, INotification notification, object context)
