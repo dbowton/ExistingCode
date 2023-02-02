@@ -83,18 +83,18 @@ Material:
     - largHigh: 0
     - largLow: 1
     - largSpeed: 2
-    - largeFrequency: 95
-    - largeHigh: 1.05
-    - largeLow: 0.92
+    - largeFrequency: 50
+    - largeHigh: 1.03
+    - largeLow: 1
     - largeSpeed: 2
     - low: 0.9
     - o: 1
     - smallFrequency: 900
-    - smallHigh: 1.1
-    - smallLow: 0.94
+    - smallHigh: 1.03
+    - smallLow: 0.9
     - smallSpeed: 0.36
     - speed: 1
-    - yOff: -0.00027132602
+    - yOff: -0.00020836151
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
