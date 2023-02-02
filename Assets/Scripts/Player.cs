@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 	public static Player Get() { return s_Instance; }
 
 	public event UnityAction OnDeath;
+	public event UnityAction OnWin;
 
 	private Rigidbody2D m_RigidBody;
 	private SpriteRenderer m_SpriteRenderer ;
@@ -22,6 +23,10 @@ public class Player : MonoBehaviour
 
 	[SerializeField]
 	private GameObject m_DeathParticals;
+
+	[SerializeField]
+	private GameObject m_WinParticals;
+
 	public GameObject m_HitParticals;
 
 	private float m_StartHeight;
@@ -52,7 +57,7 @@ public class Player : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Vector3 pos = transform.position;
-		pos.x += xInput * m_Speed * Time.deltaTime;
+		pos.x += xInput * m_Speed * Time.fixedDeltaTime;
 		pos.y = m_StartHeight;
 		transform.position = pos;
 	}
@@ -82,7 +87,7 @@ public class Player : MonoBehaviour
 				break;
 			case "VictoryEnemy":
 				PlayerPrefs.SetInt("Unlocked Level", Mathf.Max(PlayerPrefs.GetInt("Unlocked Levels"), GameManager.Get().currentLevel));
-				Die();
+				Win();
 				break;
 		}
 	}
@@ -109,6 +114,14 @@ public class Player : MonoBehaviour
 		if(lives ==2) m_SpriteRenderer.material.color = new Color(241/255f,142/255f,164/255f);
 		if(lives ==3) m_SpriteRenderer.material.color = Color.white;
 		
+	}
+
+	private void Win()
+	{
+		OnWin.Invoke();
+		GameObject particle = Instantiate(m_WinParticals);
+		particle.transform.position = transform.position;
+		Destroy(gameObject);
 	}
 
 	private void Die()
